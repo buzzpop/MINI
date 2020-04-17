@@ -11,14 +11,14 @@ if (!isset($_SESSION['prenom'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="player_home.css">
+    <link rel="stylesheet" href="../Css/player_home.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <div class="header">
     <div class="logo">
-        <img src="Images/logo-QuizzSA.png" alt="">
+        <img src="../Images/logo-QuizzSA.png" alt="">
     </div>
 
     <div class="header_title">
@@ -46,6 +46,14 @@ if (!isset($_SESSION['prenom'])){
             <a href="logout_page.php"><button class="logout" type="submit">Déconnexion</button></a>
         </div>
         <h4><?=$_SESSION['prenom']?> <?=$_SESSION['nom']?></h4>
+    </div>
+    <div class="content">
+        <div class="questions">
+            <div class="questions_head">
+
+            </div>
+            <input type="text" name="nbr_point" value="3 pts" disabled>
+        </div>
     </div>
 
     <script>

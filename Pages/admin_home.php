@@ -11,14 +11,14 @@ if (!isset($_SESSION['prenom'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="admin_home.css">
+    <link rel="stylesheet" href="../Css/admin_home.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <div class="header">
     <div class="logo">
-        <img src="Images/logo-QuizzSA.png" alt="">
+        <img src="../Images/logo-QuizzSA.png" alt="">
     </div>
 
     <div class="header_title">
@@ -36,7 +36,7 @@ if (!isset($_SESSION['prenom'])){
 </div>
 <div class="background">
     <div class="background_header">
-    <div><h2>CRÉER ET PARAMÉRTER VOS QUIZZ</h2>
+    <div><h2 >CRÉER ET PARAMÉRTER VOS QUIZZ</h2>
         <a href="logout_page.php"><button class="logout" type="submit">Déconnexion</button></a>
     </div>
     </div>
@@ -53,28 +53,28 @@ if (!isset($_SESSION['prenom'])){
             <div class="prenom_nom"><?=$_SESSION['prenom']?> <br> <span class="nom"><?=$_SESSION['nom']?></span></div>
         </div>
         <ul>
-            <a href="#">
-            <div class="menu">
-                <li>Listes Questions</li>
-                <img src="Images/Icônes/ic-liste.png" alt="">
+            <a href="#" >
+            <div class="menu"  id="list" >
+                <li >Listes Questions</li>
+                <img src="../Images/Icônes/ic-liste.png" alt="">
             </div>
             </a>
             <a href="#">
-            <div class="menu">
+            <div class="menu" id="create_admin" >
                 <li>Créer Admin</li>
-                <img src="Images/Icônes/ic-ajout.png" alt="">
+                <img src="../Images/Icônes/ic-ajout.png" alt="">
             </div>
             </a>
             <a href="#">
-            <div class="menu">
+            <div class="menu" id="list_joueur">
                 <li>Listes Joueurs</li>
-                <img src="Images/Icônes/ic-liste.png" alt="">
+                <img src="../Images/Icônes/ic-liste.png" alt="">
             </div>
             </a>
             <a href="#">
-            <div class="menu">
+            <div class="menu" id="create_questions">
                 <li>Créer Questions</li>
-                <img src="Images/Icônes/ic-ajout-active.png" alt="">
+                <img src="../Images/Icônes/ic-ajout-active.png" alt="">
             </div>
             </a>
         </ul>
@@ -82,14 +82,20 @@ if (!isset($_SESSION['prenom'])){
         </div>
 
     </div>
+    <div class="right" >
+        <div class="white-right" id="content" >
+
+        </div>
+    </div>
 </div>
-</div>
-<script>
-    setTimeout(function () {
-        document.getElementById('msg').innerHTML= '';
-    }, 2000);
+
+<script src="../Js/functions.js">
 
 </script>
+<script src="../Js/ajax.js">
+
+</script>
+
 </body>
 </html>
 
