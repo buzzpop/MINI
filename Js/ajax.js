@@ -6,17 +6,18 @@ xhr.open('GET', file)
     xhr.addEventListener('readystatechange', function(){
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
 
-            document.getElementById('content').innerHTML = xhr.responseText;
+             document.getElementById('content').innerHTML = xhr.responseText;
         }
     });
     xhr.send(null);
+
 }
 
 (function load(){
 
     if (document.getElementById('list')){
         document.getElementById('list').addEventListener('click', function () {
-            loadfile('questions_list.php');
+            loadfile('players_list.php');
 
         });
     }
@@ -40,11 +41,7 @@ xhr.open('GET', file)
     }
 
 })();
-/* recuperer l'image avatar et le charger dans la section avatar */
-function load_image(avatar) {
-    let image= document.getElementById('img');
-    image.src=window.URL.createObjectURL(avatar.files[0]);
-}
+
 
 
 

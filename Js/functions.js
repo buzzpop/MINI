@@ -40,3 +40,9 @@ for (input of inputs){
         }
     })
 }
+
+/* recuperer l'image avatar et le charger dans la section avatar */
+function load_image(avatar) {
+    let image= document.getElementById('img');
+    image.src=window.URL.createObjectURL(avatar.files[0]);
+}

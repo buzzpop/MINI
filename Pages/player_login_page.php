@@ -21,7 +21,6 @@ $decode_flux= json_decode($json_data, true);
 // var_dump($decode_flux[1]['login']);
 
 $error="";
-$bool= false;
 
 if (isset($_POST['btn'])){
 
@@ -100,7 +99,7 @@ if (isset($_POST['btn'])){
                     </div>
                     <div class="input-form">
                         <button type="submit" class="btn-form" name="btn" id="">Connexion</button>
-                        <a href="player_signin_page.php" class="link-form">S'inscrire pour jouer</a>
+                        <a href="player_signin_page.php?section=user" class="link-form">S'inscrire pour jouer</a>
                     </div>
 
                 </form>

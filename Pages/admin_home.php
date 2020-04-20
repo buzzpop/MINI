@@ -6,6 +6,9 @@ if (!isset($_SESSION['prenom'])){
     header('Location: player_login_page.php');
     exit;
 }
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -53,26 +56,26 @@ if (!isset($_SESSION['prenom'])){
             <div class="prenom_nom"><?=$_SESSION['prenom']?> <br> <span class="nom"><?=$_SESSION['nom']?></span></div>
         </div>
         <ul>
-            <a href="#" >
-            <div class="menu"  id="list" >
+            <a href="admin_home.php?section=questions_list">
+            <div class="menu" >
                 <li >Listes Questions</li>
                 <img src="../Images/Icônes/ic-liste.png" alt="">
             </div>
             </a>
-            <a href="#">
-            <div class="menu" id="create_admin" >
+            <a href="admin_home.php?section=admin" >
+            <div class="menu">
                 <li>Créer Admin</li>
                 <img src="../Images/Icônes/ic-ajout.png" alt="">
             </div>
             </a>
-            <a href="#">
-            <div class="menu" id="list_joueur">
+            <a href="admin_home.php?section=players_list" >
+            <div class="menu">
                 <li>Listes Joueurs</li>
                 <img src="../Images/Icônes/ic-liste.png" alt="">
             </div>
             </a>
-            <a href="#">
-            <div class="menu" id="create_questions">
+            <a href="admin_home.php?section=create_questions">
+            <div class="menu">
                 <li>Créer Questions</li>
                 <img src="../Images/Icônes/ic-ajout-active.png" alt="">
             </div>
@@ -84,7 +87,19 @@ if (!isset($_SESSION['prenom'])){
     </div>
     <div class="right" >
         <div class="white-right" id="content" >
-
+            <?php
+            if (isset($_GET['section'])){
+                if ($_GET['section']=='questions_list'){
+                    include_once 'questions_list.php';
+                }elseif($_GET['section']=='admin'){
+                    include_once 'create_admin.php';
+                }elseif($_GET['section']=='players_list'){
+                    include_once 'players_list.php';
+                }elseif($_GET['section']=='create_questions'){
+                    include_once 'create_questions.php';
+                }
+            }
+            ?>
         </div>
     </div>
 </div>
@@ -92,9 +107,7 @@ if (!isset($_SESSION['prenom'])){
 <script src="../Js/functions.js">
 
 </script>
-<script src="../Js/ajax.js">
 
-</script>
 
 </body>
 </html>
