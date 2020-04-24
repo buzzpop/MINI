@@ -10,6 +10,32 @@ setTimeout(function () {
     document.getElementById('err').innerHTML= '';
 }, 2000);
 
+function top_score () {
+  let  tp= document.getElementById('top_players');
+
+        tp.style.display="block";
+        tp.style.backgroundColor="yellow";
+        document.getElementById('tp').style.color="yellow";
+       if(document.getElementById('best-score').style.display==="block") {
+           document.getElementById('best-score').style.display="none";
+           document.getElementById('best_score').style.color="";
+       }
+}
+function best_score () {
+    let  b_score= document.getElementById('best-score');
+
+    b_score.style.display="block";
+    b_score.style.backgroundColor="yellow";
+    document.getElementById('best_score').style.color="yellow";
+    if(document.getElementById('top_players').style.display==="block") {
+        document.getElementById('top_players').style.display="none";
+        document.getElementById('tp').style.color="";
+    }
+
+
+}
+
+
 
 // gerer les champs non remplis et effacer le message d'erreur une fois on commence à ecrire dans le champs
 document.getElementById("form-connexion").addEventListener("submit", function (e) {

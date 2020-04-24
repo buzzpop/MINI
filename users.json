@@ -1,1 +1,10 @@
-[{"prenom":"Rassoul","nom":"Mbodj","login":"admin","password":"admin","role":"admin","avatar":"..\/Images\/rassoul.jpg"},{"prenom":"Saly","nom":"Sy","login":"saly","password":"saly","role":"player","avatar":"..\/Images\/saly.jpg","score": "590"},{"nom":"beat","prenom":"ras","login":"ras","password":"ras","avatar":"..\/Images\/la rafeterie logo.png","role":"player","score": "1003"},{"nom":"faye","prenom":"omzo","login":"omberto","password":"omberto","avatar":"..\/Images\/fenty-beauty-logo-png-1.png","role":"player","score": "212"},{"nom":"Seck","prenom":"Adjia","login":"adjia","password":"adjia","avatar":"..\/Images\/Snapchat-680653990.jpg","role":"player","score": "3200"},{"nom":"Fall","prenom":"Bamba","login":"bamba","password":"bamba","avatar":"..\/Images\/bamba_saal-20200202-0001.jpg","role":"player","score": "5400"}]
+[{"prenom":"Rassoul","nom":"Mbodj","login":"admin","password":"admin","role":"admin","avatar":"..\/Images\/rassoul.jpg"},
+  {"prenom":"Saly","nom":"Sy","login":"saly","password":"saly","role":"player","avatar":"..\/Images\/saly.jpg","score":"590"},
+  {"nom":"beat","prenom":"ras","login":"ras","password":"ras","avatar":"..\/Images\/la rafeterie logo.png","role":"player","score":"1003"},
+  {"nom":"faye","prenom":"omzo","login":"omberto","password":"omberto","avatar":"..\/Images\/fenty-beauty-logo-png-1.png","role":"player","score":"212"},
+  {"nom":"Seck","prenom":"Adjia","login":"adjia","password":"adjia","avatar":"..\/Images\/Snapchat-680653990.jpg","role":"player","score":"3200"},
+  {"nom":"Fall","prenom":"Bamba","login":"bamba","password":"bamba","avatar":"..\/Images\/bamba_saal-20200202-0001.jpg","role":"player","score":"5400"},
+  {"nom":"Gueye","prenom":"Maguette","login":"max","password":"max","avatar":"..\/Images\/IMG-20191017-WA0035.jpg","role":"player","score":"1345"},
+  {"nom":"hhhh","prenom":"xvxv","login":"aaaa","password":"aaaa","avatar":"..\/Images\/bamba_saal-20200202-0001.jpg","role":"player","score":"3"},
+  {"nom":"Ndiaye","prenom":"Abdou","login":"abdou","password":"abdou","avatar":"..\/Images\/bamba_saal-20200202-0001.jpg","role":"player","score":"1250"},
+  {"nom":"Diop","prenom":"Ansou","login":"ansou","password":"ansou","avatar":"..\/Images\/bamba_saal-20200202-0001.jpg","role":"player","score":"1"}]

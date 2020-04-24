@@ -1,5 +1,7 @@
 <?php
-require_once "recup_avatar_function.php";
+
+// enregistrer les donnees du formulaire dans le json
+
 function save_data_to_json ($login){
     $json_data= file_get_contents('../users.json');
 
@@ -21,8 +23,8 @@ foreach ($decode_flux as $value){
 
         }else{
             $data= array(
-                "nom"=> $_POST["nom"],
                 "prenom"=>$_POST["prenom"],
+                "nom"=> $_POST["nom"],
                 "login"=> $_POST["login"],
                 "password"=>$_POST["pwd"],
                 "avatar"=>recup_avatar(),
@@ -44,4 +46,14 @@ if (!empty($data)){
 }
 
 
+}
+// recuperer l'avatar
+function recup_avatar(){
+    if (isset($_FILES['file'])) {
+        $name_file = $_FILES['file']['name'];
+        $tmp_name = $_FILES['file']['tmp_name'];
+        $local_image = "../Images/";
+        move_uploaded_file($tmp_name, $local_image.$name_file);
+        return $local_image.$name_file;
+    }
 }

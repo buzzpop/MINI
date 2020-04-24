@@ -1,11 +1,8 @@
 <?php
-
 $json_data= file_get_contents('../users.json');
-
 $decode_flux= json_decode($json_data, true);
+$tab=[];
 
-if (isset($_GET['section'])){
-    if ($_GET['section']== "players_list"){
         foreach ($decode_flux as $value){
             if ($value['role']== "player"){
                 $tab[]= array(
@@ -15,8 +12,10 @@ if (isset($_GET['section'])){
                 );
             }
         }
-    }
-}
+
+// tri decroissant de la colonne score
+$column= array_column($tab,'score');
+array_multisort($column, SORT_DESC, $tab);
 
 ?>
 
@@ -30,25 +29,15 @@ if (isset($_GET['section'])){
 <body>
 <h3>LISTE DES JOUEURS PAR SCORE</h3>
 <div class="content">
-    <table >
-        <tr>
-            <th>Prenom</th>
-            <th>Nom</th>
-            <th>Score</th>
-        </tr>
-        <?php
+    <?php
+    require_once "pagination.php";
+    pagination($tab);
 
-        foreach ($tab as $item){
-            echo'<tr>';
-                echo '<td>'.$item['prenom'].'</td>';
-                echo '<td>'.$item['nom'].'</td>';
-                echo '<td>'.$item['score'].'</td>';
-            echo '</tr>';
-        }
+    ?>
 
-        ?>
 
-    </table>
+
+
 </div>
 
 </body>

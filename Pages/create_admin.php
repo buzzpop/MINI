@@ -2,7 +2,9 @@
 
 
 require_once 'functions.php';
+
    if (isset($_POST['btn'])){
+
 
        save_data_to_json($_POST['login']);
        header("Location: admin_home.php");
