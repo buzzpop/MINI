@@ -80,11 +80,12 @@ foreach ($players as $item){
 
         </div>
         <div class="scores">
+            <p>Cliquer pour afficher le Top Score</p>
             <ul>
                 <a href="#" id="tp" onclick="top_score();"><li class="tp_s">Top Scores</li></a>
                 <a href="#" id="best_score" onclick="best_score()"><li>Mon Meilleur Score</li></a>
             </ul>
-            <div class="screen" >
+            <div class="screen">
                 <div id="top_players">
                 <table >
                     <tr>
@@ -113,7 +114,6 @@ foreach ($players as $item){
     </div>
 
     <script src="../Js/functions.js">
-
 
     </script>
 </body>

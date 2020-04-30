@@ -30,7 +30,7 @@ array_multisort($column, SORT_DESC, $tab);
 <h3>LISTE DES JOUEURS PAR SCORE</h3>
 <div class="content">
     <?php
-    require_once "pagination.php";
+    require_once "pagination_players_list.php";
     pagination($tab);
 
     ?>

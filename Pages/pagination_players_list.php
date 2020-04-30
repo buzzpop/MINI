@@ -1,8 +1,8 @@
 <?php
 function pagination ($tab){
-    $num_page=0;
+
     $nb_articles_total = count( $tab);
-    $nb_per_page = 2;
+    $nb_per_page = 15;
     $nb_pages = ceil($nb_articles_total / $nb_per_page);
     if (isset($_GET['page'])) {
         $num_page = $_GET['page'];
