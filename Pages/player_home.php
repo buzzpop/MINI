@@ -80,7 +80,8 @@ foreach ($players as $item){
 
         </div>
         <div class="scores">
-            <p>Cliquer pour afficher le Top Score</p>
+            <p id="DivClignotante" style="visibility:visible; color: red">Cliquez pour afficher les Scores</p>
+
             <ul>
                 <a href="#" id="tp" onclick="top_score();"><li class="tp_s">Top Scores</li></a>
                 <a href="#" id="best_score" onclick="best_score()"><li>Mon Meilleur Score</li></a>
@@ -112,6 +113,21 @@ foreach ($players as $item){
             </div>
         </div>
     </div>
+    <script>
+        let clignotement = function(){
+            if (document.getElementById('DivClignotante').style.visibility=='visible'){
+                document.getElementById('DivClignotante').style.visibility='hidden';
+            }
+            else{
+                document.getElementById('DivClignotante').style.visibility='visible';
+            }
+        };
+
+        let periode=setInterval(clignotement, 900);
+        setTimeout(function () {
+            clearInterval(periode);
+        }, 10000)
+    </script>
 
     <script src="../Js/functions.js">
 
