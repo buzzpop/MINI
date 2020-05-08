@@ -1,8 +1,8 @@
 <?php
-function paginate ($tab, $nbr_questions){
+function paginate ($tab){
 
     $nb_articles_total = count( $tab);
-    $nb_per_page = $nbr_questions;
+    $nb_per_page = 5;
     $nb_pages = ceil($nb_articles_total / $nb_per_page);
     if (isset($_GET['page'])) {
         $num_page = $_GET['page'];

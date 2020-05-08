@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+if (empty($_SESSION['start'])){
+    $_SESSION['start']=1;
+}
 $avatar= $_SESSION['avatar'];
 if (!isset($_SESSION['prenom'])){
     $_SESSION['msg']='Veuillez vous connecter d\'aboord';
@@ -29,6 +33,44 @@ foreach ($players as $item){
     }
 }
 
+//
+$json_nbr_q= file_get_contents('../nbr.json');
+$dec= json_decode($json_nbr_q,true);
+$nbr=$dec['nbrq'];
+
+//
+$tab_questions=[];
+$json_data= file_get_contents('../questions.json');
+$decode_flux= json_decode($json_data, true);
+
+foreach ($decode_flux as $questions){
+    $tab_questions[]= $questions;
+
+}
+
+//get random
+require_once "function_get_random.php";
+
+if ($_SESSION['start']==1){
+  $_SESSION['shuffle']= getRandomStr($nbr, $tab_questions);
+    $_SESSION['start']=2;
+}
+
+$score=0;
+$nb_articles_total = count( $_SESSION['shuffle']);
+$nb_per_page = 1;
+$nb_pages = ceil($nb_articles_total / $nb_per_page);
+if (isset($_GET['page'])) {
+    $num_page = $_GET['page'];
+}else{
+    $num_page=1;
+}
+$_SESSION['page']=$num_page;
+$_SESSION['nbr_page']=$nb_pages;
+
+$debut = ($num_page - 1) * $nb_per_page;
+$fin = $debut + $nb_per_page - 1;
+
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +99,7 @@ foreach ($players as $item){
 
     </div>
 </div>
+
 <div class="background">
     <div class="background_header">
         <div class="image">
@@ -71,22 +114,86 @@ foreach ($players as $item){
         <h4><?=$_SESSION['prenom']?> <?=$_SESSION['nom']?></h4>
         
     </div>
-    <div class="content">
+    <form action="traitement.php" method="post">
         <div class="questions">
             <div class="questions_head">
 
+                <?php
+
+                echo '<div style="padding-top: 20px">';
+                echo '<h3>';
+               echo 'Question '.$num_page.'/'.$nb_pages. ':<br>';
+                for ($i=$debut; $i<=$fin; $i++) {
+                    if (array_key_exists($i, $_SESSION['shuffle'])) {
+                        echo $_SESSION['shuffle'][$i]['question'];
+                        $score= $_SESSION['shuffle'][$i]['point'];
+                    }
+                }
+                echo '</h3>';
+                echo '</div>';
+                ?>
             </div>
-            <input type="text" name="nbr_point" value="3 pts" disabled>
+            <div class="points"> <input  type="text" name="nbr_point" value="<?=$score?> pts" disabled></div>
+
+            <div class="display_questions">
+                <?php
+
+                for ($i=$debut; $i<=$fin; $i++){
+                    if (array_key_exists($i, $_SESSION['shuffle'])) {
+                        foreach ($_SESSION['shuffle'][$i]['reponse'] as $key){
+                            if ($_SESSION['shuffle'][$i]['type de reponse']=='texte'){
+                                echo'<input  type="text" name="textResponse"';
+                                echo '<br>';
+                            } elseif  ($_SESSION['shuffle'][$i]['type de reponse']=='simple'){
+
+                                    echo'<input type="radio"  value="'.$key.'" name="radio">'.' '.$key;
+                                    echo '<br>';
+                            }else{
+
+                                    echo '<input check=""  type="checkbox" value="'.$key.'">'.' '.$key;
+                                    echo '<br>';
+                            }
+
+                        }
+                        if ($_SESSION['shuffle'][$i]['type de reponse']=='texte'){
+                            echo '<input type="hidden" name="choice" value="texte">';
+                        }elseif ($_SESSION['shuffle'][$i]['type de reponse']=='simple'){
+                            echo '<input type="hidden" name="choice" value="simple">';
+                        }else{
+                            echo '<input type="hidden" name="choice" value="multiple">';
+                        }
+                    }
+                }
+
+
+
+                echo '<div class="div">';
+                if ($num_page > 1){
+                    $precedent= $num_page - 1;
+                    echo '<button type="submit" class="sui gauche"><a href="player_home.php?page='.$precedent.'">PREVIOUS</a></button>';
+                }
+
+                if ($num_page <= $nb_pages){
+                    $suivant= $num_page + 1;
+
+                    echo '<button type="submit" name="next" value="'.$suivant.'"  class="sui droite"><a id="btnn" >NEXT</a></button>';
+                }
+
+                echo '</div>';
+                ?>
+
+            </div>
+
 
         </div>
+</form>
         <div class="scores">
-            <p id="DivClignotante" style="visibility:visible; color: red">Cliquez pour afficher les Scores</p>
 
             <ul>
                 <a href="#" id="tp" onclick="top_score();"><li class="tp_s">Top Scores</li></a>
                 <a href="#" id="best_score" onclick="best_score()"><li>Mon Meilleur Score</li></a>
             </ul>
-            <div class="screen">
+
                 <div id="top_players">
                 <table >
                     <tr>
@@ -110,27 +217,23 @@ foreach ($players as $item){
                     echo '</span>Meilleure Score: '.$best_score.' Pts</span>';
                     ?>
                 </div>
-            </div>
+
         </div>
-    </div>
     <script>
-        let clignotement = function(){
-            if (document.getElementById('DivClignotante').style.visibility=='visible'){
-                document.getElementById('DivClignotante').style.visibility='hidden';
-            }
-            else{
-                document.getElementById('DivClignotante').style.visibility='visible';
-            }
-        };
 
-        let periode=setInterval(clignotement, 900);
-        setTimeout(function () {
-            clearInterval(periode);
-        }, 10000)
+       let inputs= document.getElementsByTagName("input");
+       let i=0;
+       for (input of inputs){
+           if (input.hasAttribute("check")){
+               input.setAttribute("name", `checkbox${i++}`);
+           }
+       }
     </script>
-
     <script src="../Js/functions.js">
 
     </script>
 </body>
 </html>
+
+<?php
+

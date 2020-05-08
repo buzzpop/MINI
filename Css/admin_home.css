@@ -206,6 +206,7 @@ ul li a{
     box-shadow: 7px 10px 20px rgba(0,0,0,0.5);
     text-align: left;
     position: relative;
+    overflow: scroll;
 
 }
 /* creation admin css  */
@@ -324,7 +325,6 @@ color: rgb(141, 128, 112);
  .content .sui{
     float: right;
     position: absolute;
-    top: 92%;
     font-size: 15px;
     font-weight: bold;
      margin-top: 0px;
@@ -340,7 +340,6 @@ color: rgb(141, 128, 112);
     float: left;
     margin-right: 0px;
     position: absolute;
-    top: 92%;
     font-size: 15px;
     font-weight: bold;
     margin-top: 0px;
@@ -352,6 +351,13 @@ color: rgb(141, 128, 112);
 }
 .content a{
     text-decoration: none;
+}
+.div_nbr_qst{
+    height: 50px;
+    margin-bottom: 10px;
+}
+.div_msg_error{
+    height: 20px;
 }
 
 
