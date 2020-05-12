@@ -3,7 +3,7 @@ session_start();
 $avatar= $_SESSION['avatar'];
 if (!isset($_SESSION['prenom'])){
     $_SESSION['msg']='Veuillez vous connecter d\'aboord';
-    header('Location: player_login_page.php');
+    header('Location: ../index.php');
     exit;
 }
 

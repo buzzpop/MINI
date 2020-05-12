@@ -177,7 +177,7 @@ td{
 }
 .sui{
     position: absolute;
-    top: 80%;
+    top: 75%;
     font-size: 15px;
     font-weight: bold;
     padding: 5px;
@@ -187,10 +187,10 @@ td{
     text-align: center;
 }
 .gauche{
-    left: 20%;
+    left: 15%;
 }
 .droite{
-    right: 20%;
+    right: 40%;
 }
 h3{
     margin: 0px;

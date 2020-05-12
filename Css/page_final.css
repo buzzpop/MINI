@@ -1,0 +1,117 @@
+
+.header{
+    background-color: rgb(5, 36, 38);
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+
+}
+.header .logo{
+    height: 80px;
+    width: 5%;
+    margin-left: 30px;
+    float: left;
+
+
+}
+.logo img{
+    width: 100%;
+    height: 100%;
+
+}
+.header_title{
+
+    margin-left: 200px;
+    margin-right: 200px;
+    height: 77px;
+    text-align: center;
+}
+.header_title h3{
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    margin: 0px;
+    padding-top: 13px;
+}
+.left{
+    float: left;
+    width: 20%;
+    height: 500px;
+    background-color:#2F4F4F ;
+    box-shadow: 5px 5px 10px darkolivegreen;
+}
+
+.round{
+    width: 85px;
+    height: 85px;
+    border: 1px solid rgb(108, 148, 150);
+    border-radius: 50%;
+    margin-left: 32%;
+    padding-top: 10px;
+    padding-left: 10px;
+    float: left;
+    margin-top: 10px;
+
+}
+.round .image{
+
+    width: 75px;
+    height: 75px;
+
+}
+.image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.prenom_nom{
+    clear: both;
+    text-align: center;
+    color: aliceblue;
+    font-family:"Palatino Linotype";
+    margin-top: 5px;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+}
+.score{
+    margin-top: 15px;
+    text-align: center;
+    color: white;
+    font-family:"Palatino Linotype";
+}
+h3{
+
+    margin-top: 5px;
+    font-size: 20px;
+    font-style: italic;
+
+}
+.bottom{
+    margin-top: 100px;
+    height: 50px;
+}
+.bouton{
+    border: none;
+    height: 40px;
+    width: 40%;
+    color: #2F4F4F;
+    font-weight: 900;
+    border-radius: 3%;
+
+}
+.g{
+    float: left;
+    margin-left: 5px;
+}
+.d{
+    float: right;
+    margin-right: 5px;
+}
+span{
+    font-size: 20px;
+    background-color: white;
+    color:#2F4F4F;
+    font-weight: 900;
+
+}

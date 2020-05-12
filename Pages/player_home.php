@@ -7,7 +7,7 @@ if (empty($_SESSION['start'])){
 $avatar= $_SESSION['avatar'];
 if (!isset($_SESSION['prenom'])){
     $_SESSION['msg']='Veuillez vous connecter d\'aboord';
-    header('Location: player_login_page.php');
+    header('Location: index.php');
     exit;
 }
 
@@ -115,7 +115,9 @@ $fin = $debut + $nb_per_page - 1;
         
     </div>
     <form action="traitement.php" method="post">
+
         <div class="questions">
+
             <div class="questions_head">
 
                 <?php
@@ -142,16 +144,51 @@ $fin = $debut + $nb_per_page - 1;
                     if (array_key_exists($i, $_SESSION['shuffle'])) {
                         foreach ($_SESSION['shuffle'][$i]['reponse'] as $key){
                             if ($_SESSION['shuffle'][$i]['type de reponse']=='texte'){
-                                echo'<input  type="text" name="textResponse"';
-                                echo '<br>';
+
+                                if (isset($_SESSION['result'][$i])){
+
+                                    echo'<input  type="text" name="textResponse" value="'.$_SESSION['result'][$i].'" />';
+                                    echo '<br>';
+
+                                }else{
+
+                                    echo'<input  type="text" name="textResponse"  />';
+                                    echo '<br>';
+                                }
+
                             } elseif  ($_SESSION['shuffle'][$i]['type de reponse']=='simple'){
+                                            if (isset($_SESSION['result'][$i])){
+                                                if($_SESSION['result'][$i]==$key){
+                                                    echo'<input type="radio"  value="'.$key.'" name="radio" checked>'.' '.$key;
+                                                    echo '<br>';
+                                                }else{
+                                                    echo'<input type="radio"  value="'.$key.'" name="radio">'.' '.$key;
+                                                    echo '<br>';
+                                                }
+                                            }else{
+                                                echo'<input type="radio"  value="'.$key.'" name="radio">'.' '.$key;
+                                                echo '<br>';
+                                            }
 
-                                    echo'<input type="radio"  value="'.$key.'" name="radio">'.' '.$key;
-                                    echo '<br>';
                             }else{
+                                 if (isset($_SESSION['result'][$i])) {
+                                     if (in_array($key,$_SESSION['result'][$i])) {
+                                             echo '<input  type="checkbox" checked name="check[]" value="'.$key.'" />'.' '.$key;
+                                             echo '<br>';
 
-                                    echo '<input check=""  type="checkbox" value="'.$key.'">'.' '.$key;
-                                    echo '<br>';
+                                         }else{
+                                             echo '<input  type="checkbox"  name="check[]" value="'.$key.'" />'.' '.$key;
+                                             echo '<br>';
+                                         }
+
+                                 }else{
+                                    if (isset($key)){
+                                        echo '<input  type="checkbox" name="check[]" value="'.$key.'" />'.' '.$key;
+                                        echo '<br>';
+                                    }
+
+                                 }
+
                             }
 
                         }
@@ -170,13 +207,15 @@ $fin = $debut + $nb_per_page - 1;
                 echo '<div class="div">';
                 if ($num_page > 1){
                     $precedent= $num_page - 1;
-                    echo '<button type="submit" class="sui gauche"><a href="player_home.php?page='.$precedent.'">PREVIOUS</a></button>';
+                    echo '<button type="submit" name="pre" class="sui gauche">PREVIOUS</button>';
                 }
 
-                if ($num_page <= $nb_pages){
+                if ($num_page < $nb_pages){
                     $suivant= $num_page + 1;
 
-                    echo '<button type="submit" name="next" value="'.$suivant.'"  class="sui droite"><a id="btnn" >NEXT</a></button>';
+                    echo '<button type="submit" name="next" class="sui droite">NEXT</button>';
+                }if ($num_page == $nb_pages){
+                    echo '<button type="submit" name="next" class="sui droite">FINISH</button>';
                 }
 
                 echo '</div>';
@@ -219,16 +258,7 @@ $fin = $debut + $nb_per_page - 1;
                 </div>
 
         </div>
-    <script>
 
-       let inputs= document.getElementsByTagName("input");
-       let i=0;
-       for (input of inputs){
-           if (input.hasAttribute("check")){
-               input.setAttribute("name", `checkbox${i++}`);
-           }
-       }
-    </script>
     <script src="../Js/functions.js">
 
     </script>

@@ -7,13 +7,13 @@ if (isset($_SESSION['role'])){
         exit;
     }else{
         $_SESSION['message']='Veuillez vous déconnecter d\'aboord';
-        header("Location: player_home.php");
+        header("Location: Pages/player_home.php");
         exit;
     }
 
 }
 
-$json_data= file_get_contents('../users.json');
+$json_data= file_get_contents('users.json');
 
 $decode_flux= json_decode($json_data, true);
 
@@ -33,11 +33,11 @@ if (isset($_POST['btn'])){
                 $_SESSION['avatar']= $element['avatar'];
                 if ($element['role'] == "player"){
                     $_SESSION['role']= $element['role'];
-                    header("Location: player_home.php");
+                    header("Location: Pages/player_home.php");
                     exit;
                 }else{
                     $_SESSION['role']= $element['role'];
-                    header("Location: admin_home.php");
+                    header("Location: Pages/admin_home.php");
                     exit;
                 }
 
@@ -52,14 +52,14 @@ if (isset($_POST['btn'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../Css/player_login_page.css">
+    <link rel="stylesheet" href="Css/player_login_page.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <div class="header">
     <div class="logo">
-        <img src="../Images/logo-QuizzSA.png" alt="">
+        <img src="Images/logo-QuizzSA.png" alt="">
     </div>
 
     <div class="header_title">
@@ -98,7 +98,7 @@ if (isset($_POST['btn'])){
                     </div>
                     <div class="input-form">
                         <button type="submit" class="btn-form" name="btn" id="">Connexion</button>
-                        <a href="player_signin_page.php?section=user" class="link-form">S'inscrire pour jouer</a>
+                        <a href="Pages/player_signin_page.php?section=user" class="link-form">S'inscrire pour jouer</a>
                     </div>
 
                 </form>
@@ -108,7 +108,7 @@ if (isset($_POST['btn'])){
 
     </body>
 
-<script src="../Js/functions.js">
+<script src="Js/functions.js">
 
 </script>
 
